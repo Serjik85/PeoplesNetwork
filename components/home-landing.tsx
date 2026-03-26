@@ -33,16 +33,26 @@ export function HomeLanding({
         variant="outlined"
         sx={{
           p: 3,
-          background:
-            "radial-gradient(circle at 82% 20%, rgba(15,118,110,0.14), rgba(15,118,110,0)), #fffdf9"
+          background: "#ffffff"
         }}
       >
         <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
           <Box flex={1.4}>
-            <Typography variant="caption" sx={{ fontWeight: 700, color: "#0f5d57", letterSpacing: ".06em" }}>
+            <Typography
+              variant="caption"
+              sx={{ fontWeight: 700, color: "text.secondary", letterSpacing: ".08em" }}
+            >
               PRACTICE NETWORK FOR BUILDERS
             </Typography>
-            <Typography variant="h2" sx={{ mt: 1, fontFamily: "var(--font-display)", lineHeight: 1.07 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                mt: 1,
+                fontFamily: "var(--font-display)",
+                lineHeight: 1.07,
+                fontSize: { xs: "2.5rem", md: "4rem" }
+              }}
+            >
               Build together, ship demos fast, grow your coding confidence
             </Typography>
             <Typography color="text.secondary" sx={{ mt: 1.5 }}>
@@ -50,7 +60,7 @@ export function HomeLanding({
               collaborate, and finish something real in 2-4 weeks.
             </Typography>
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 2 }}>
-              <Button variant="contained" onClick={() => setJoinOpen(true)}>
+              <Button variant="contained" onClick={() => setJoinOpen(true)} sx={{ px: 2.25 }}>
                 Join builders circle
               </Button>
               <Button variant="outlined" component={Link} href="/projects">
@@ -64,7 +74,7 @@ export function HomeLanding({
             </Stack>
           </Box>
 
-          <Paper variant="outlined" sx={{ p: 2, flex: 1 }}>
+          <Paper variant="outlined" sx={{ p: 2, flex: 1, background: "#fcfcfb" }}>
             <Typography variant="h6" fontFamily="var(--font-display)">
               What happens in week 1
             </Typography>
