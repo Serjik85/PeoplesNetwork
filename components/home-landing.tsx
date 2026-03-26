@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { FormatPicker } from "@/components/format-picker";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -8,6 +9,9 @@ import {
   Box,
   Button,
   Chip,
+  Dialog,
+  DialogContent,
+  DialogTitle,
   Paper,
   Stack,
   Typography
@@ -21,6 +25,7 @@ export function HomeLanding({
   projects: ProjectCard[];
 }) {
   const highlights = ["React", "Next.js", "TypeScript", "Node.js", "AI side-projects"];
+  const [joinOpen, setJoinOpen] = useState(false);
 
   return (
     <Stack spacing={2}>
@@ -45,7 +50,7 @@ export function HomeLanding({
               collaborate, and finish something real in 2-4 weeks.
             </Typography>
             <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mt: 2 }}>
-              <Button variant="contained" component={Link} href="#join">
+              <Button variant="contained" onClick={() => setJoinOpen(true)}>
                 Join builders circle
               </Button>
               <Button variant="outlined" component={Link} href="/projects">
@@ -69,7 +74,7 @@ export function HomeLanding({
               <li>You get 3 team suggestions</li>
               <li>You join one project and start building</li>
             </Box>
-            <Button variant="contained" component={Link} href="#join" sx={{ mt: 1.5 }}>
+            <Button variant="contained" onClick={() => setJoinOpen(true)} sx={{ mt: 1.5 }}>
               Start now
             </Button>
           </Paper>
@@ -88,6 +93,22 @@ export function HomeLanding({
           {["Structured sprints", "Small teams", "Weekly check-ins", "Demo at finish"].map((item) => (
             <Chip key={item} label={item} size="small" variant="outlined" />
           ))}
+        </Stack>
+      </Paper>
+
+      <Paper variant="outlined" sx={{ p: 2 }}>
+        <Typography variant="h4" sx={{ mb: 1, fontFamily: "var(--font-display)" }}>
+          Let&apos;s build our own network
+        </Typography>
+        <Typography color="text.secondary" sx={{ mb: 1 }}>
+          Most developer social apps are noisy and not focused on actually shipping together.
+          PeoplesNetwork is our attempt to build a better one, in public, with the community.
+        </Typography>
+        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+          <Chip size="small" label="Less scrolling" variant="outlined" />
+          <Chip size="small" label="More building" variant="outlined" />
+          <Chip size="small" label="Small teams" variant="outlined" />
+          <Chip size="small" label="Real demos" variant="outlined" />
         </Stack>
       </Paper>
 
@@ -153,6 +174,21 @@ export function HomeLanding({
         </Typography>
         <WaitlistForm />
       </Paper>
+
+      <Dialog open={joinOpen} onClose={() => setJoinOpen(false)} maxWidth="sm" fullWidth>
+        <DialogTitle>Join builders circle</DialogTitle>
+        <DialogContent>
+          <Typography color="text.secondary" sx={{ mb: 1.5 }}>
+            Fill this once. We will propose team options that match your stack and weekly capacity.
+          </Typography>
+          <WaitlistForm
+            submitLabel="Send join request"
+            onSubmitted={() => {
+              setTimeout(() => setJoinOpen(false), 1200);
+            }}
+          />
+        </DialogContent>
+      </Dialog>
     </Stack>
   );
 }
@@ -187,4 +223,3 @@ function Quote({ text, author }: { text: string; author: string }) {
     </Box>
   );
 }
-

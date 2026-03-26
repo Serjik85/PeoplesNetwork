@@ -20,7 +20,13 @@ const initialState: FormState = {
   timezone: "Europe/Copenhagen"
 };
 
-export function WaitlistForm() {
+export function WaitlistForm({
+  submitLabel = "Join builders circle",
+  onSubmitted
+}: {
+  submitLabel?: string;
+  onSubmitted?: () => void;
+}) {
   const [data, setData] = useState<FormState>(initialState);
   const [status, setStatus] = useState<string>("");
 
@@ -49,6 +55,7 @@ export function WaitlistForm() {
 
     setStatus("Done. You are in. We will suggest team options soon.");
     setData(initialState);
+    onSubmitted?.();
   }
 
   return (
@@ -115,7 +122,7 @@ export function WaitlistForm() {
         onChange={(e) => setData((s) => ({ ...s, timezone: e.target.value }))}
       />
       <button className="btn" type="submit">
-        Join builders circle
+        {submitLabel}
       </button>
       {status ? <small className="muted">{status}</small> : null}
     </form>
