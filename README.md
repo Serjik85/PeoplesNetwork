@@ -7,6 +7,18 @@ We are building this for ourselves as developers.
 
 If you want a better place to find coding teammates and ship small projects together, join us and help shape it.
 
+## Let's Build Our Own Network
+Most developer social apps are noisy, generic, or not built around actually shipping together.
+
+So let's build our own.
+
+PeoplesNetwork is a community-built social platform for developers who want:
+- meaningful collaboration over endless scrolling
+- small teams over huge random chats
+- demos and progress over empty networking
+
+If you ever thought "I wish there was a better place for devs to build together" - this is that place, and we are building it in public.
+
 We welcome:
 - frontend contributors
 - backend contributors
