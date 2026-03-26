@@ -56,6 +56,11 @@ npm run dev
 
 Open: `http://localhost:3000`
 
+If static assets get out of sync (404 on `/_next/static/...`), run:
+```bash
+npm run dev:clean
+```
+
 ## Main Routes
 - `/` Landing
 - `/projects` Practice projects
