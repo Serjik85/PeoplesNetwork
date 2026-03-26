@@ -19,13 +19,18 @@ export function JoinRequestForm({ projectId, roleOptions }: Props) {
     event.preventDefault();
     setStatus("Sending request...");
 
+    const isUuid = (value: string) =>
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+        value
+      );
+
     const response = await fetch(`/api/projects/${projectId}/join`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
         email,
         full_name: name,
-        role_id: roleId || null,
+        role_id: roleId && isUuid(roleId) ? roleId : null,
         motivation,
         hours_per_week: hoursPerWeek
       })
@@ -112,4 +117,3 @@ export function JoinRequestForm({ projectId, roleOptions }: Props) {
     </form>
   );
 }
-
